@@ -1,56 +1,68 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { BORDER, GREEN, PINK, Tag } from '@/app/components/ui'
 
-interface Cd { d: string; h: string; m: string; s: string }
+interface Cd { d: string; h: string; m: string; s: string; progress: number }
 
-const TARGET = new Date('2027-02-19T20:00:00').getTime()
+const TARGET = new Date('2027-01-16T20:00:00+01:00').getTime()
+const START = new Date('2026-06-01T00:00:00+02:00').getTime()
 
 function pad(n: number) { return String(n).padStart(2, '0') }
 
 function compute(): Cd {
-  const t = TARGET - Date.now()
-  if (t <= 0) return { d: '00', h: '00', m: '00', s: '00' }
+  const now = Date.now()
+  const t = TARGET - now
+  const progress = Math.max(0, Math.min(100, ((now - START) / (TARGET - START)) * 100))
+  if (t <= 0) return { d: '00', h: '00', m: '00', s: '00', progress: 100 }
   return {
     d: String(Math.floor(t / 86400000)),
     h: pad(Math.floor(t / 3600000) % 24),
     m: pad(Math.floor(t / 60000) % 60),
     s: pad(Math.floor(t / 1000) % 60),
+    progress,
   }
 }
 
-function Unit({ val, label, color }: { val: string; label: string; color: string }) {
+function Unit({ val, label }: { val: string; label: string }) {
   return (
-    <div style={{ minWidth: 64 }}>
-      <div style={{ fontFamily: "'Clash Display', sans-serif", fontWeight: 700, fontSize: 'clamp(40px, 7vw, 72px)', color, lineHeight: 1 }}>
-        {val}
-      </div>
-      <div style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>
-        {label}
-      </div>
+    <div style={{ border: BORDER, padding: 16, textAlign: 'center' }}>
+      <div style={{ fontSize: 'clamp(40px,6vw,64px)', fontWeight: 500, color: GREEN, lineHeight: 1 }}>{val}</div>
+      <div style={{ fontSize: 14, color: PINK, marginTop: 6 }}>{label}</div>
     </div>
   )
 }
 
 export default function Countdown() {
-  const [cd, setCd] = useState<Cd>({ d: '—', h: '—', m: '—', s: '—' })
+  const [cd, setCd] = useState<Cd>({ d: '—', h: '—', m: '—', s: '—', progress: 0 })
 
   useEffect(() => {
-    setCd(compute())
-    const id = setInterval(() => setCd(compute()), 1000)
-    return () => clearInterval(id)
+    const tick = () => setCd(compute())
+    const first = setTimeout(tick, 0)
+    const id = setInterval(tick, 1000)
+    return () => { clearTimeout(first); clearInterval(id) }
   }, [])
 
   return (
-    <div style={{ border: '1px solid rgba(153,0,255,0.3)', background: 'rgba(153,0,255,0.05)', padding: 'clamp(26px, 4vw, 44px)', textAlign: 'center' }}>
-      <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 24 }}>
-        Décollage dans
+    <div style={{ border: BORDER, padding: 'clamp(20px,3vw,32px)' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+        <Tag>Décollage dans</Tag>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: GREEN }}>
+          <span style={{ width: 8, height: 8, background: GREEN, animation: 'blink 1.4s infinite' }} />
+          signal actif
+        </div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(14px, 4vw, 48px)', justifyContent: 'center' }}>
-        <Unit val={cd.d} label="Jours"    color="#fff"     />
-        <Unit val={cd.h} label="Heures"   color="#9900FF"  />
-        <Unit val={cd.m} label="Minutes"  color="#9900FF"  />
-        <Unit val={cd.s} label="Secondes" color="#C9A84C"  />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))', gap: 12, marginTop: 20 }}>
+        <Unit val={cd.d} label="jours" />
+        <Unit val={cd.h} label="heures" />
+        <Unit val={cd.m} label="minutes" />
+        <Unit val={cd.s} label="secondes" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
+        <span style={{ fontSize: 12, fontWeight: 600, color: PINK }}>WD</span>
+        <div style={{ flex: 1, height: 12, border: BORDER, padding: 1 }}>
+          <div style={{ height: '100%', width: `${cd.progress.toFixed(1)}%`, background: PINK }} />
+        </div>
       </div>
     </div>
   )

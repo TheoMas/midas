@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
-import StarField from '@/app/components/StarField'
 import Nav from '@/app/components/Nav'
+import { BORDER, GREEN, PINK, INK, dim } from '@/app/components/ui'
 import Accueil from '@/app/sections/Accueil'
 import Spectacle from '@/app/sections/Spectacle'
 import Artistes from '@/app/sections/Artistes'
@@ -20,7 +19,7 @@ export default function MidasPage() {
   const [subLoading, setSubLoading] = useState(false)
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 880)
+    const check = () => setIsMobile(window.innerWidth < 900)
     check()
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
@@ -37,12 +36,12 @@ export default function MidasPage() {
     setSubLoading(true)
     const email = (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value
     try {
-      await fetch('/api/newsletter', {
+      const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
-      setSubscribed(true)
+      if (res.ok) setSubscribed(true)
     } finally {
       setSubLoading(false)
     }
@@ -50,11 +49,8 @@ export default function MidasPage() {
 
   return (
     <>
-      {/* Fixed backgrounds */}
-      <StarField />
-      <div style={{ position: 'fixed', inset: 0, zIndex: -2, pointerEvents: 'none', background: 'radial-gradient(ellipse 90% 55% at 50% -5%, rgba(153,0,255,0.26), transparent 60%), radial-gradient(circle at 82% 85%, rgba(153,0,255,0.14), transparent 48%), radial-gradient(circle at 12% 62%, rgba(201,168,76,0.07), transparent 42%)', animation: 'neb 14s ease-in-out infinite alternate' }} />
-      <div style={{ position: 'fixed', inset: 0, zIndex: 55, pointerEvents: 'none', background: 'radial-gradient(ellipse at center, transparent 52%, rgba(0,0,0,0.72) 100%)' }} />
-      <div style={{ position: 'fixed', inset: 0, zIndex: 60, pointerEvents: 'none', opacity: 0.45, mixBlendMode: 'overlay', background: 'repeating-linear-gradient(180deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px)' }} />
+      {/* Scanlines */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 60, pointerEvents: 'none', opacity: 0.35, background: 'repeating-linear-gradient(180deg, rgba(224,168,242,0.06) 0 1px, transparent 1px 3px)' }} />
 
       <Nav
         page={page}
@@ -64,72 +60,47 @@ export default function MidasPage() {
         isMobile={isMobile}
       />
 
-      <main style={{ position: 'relative', zIndex: 1, paddingTop: 74 }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={page}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-          >
-            {page === 'accueil'     && <Accueil     onNavigate={navigate} />}
-            {page === 'spectacle'   && <Spectacle />}
-            {page === 'artistes'    && <Artistes />}
-            {page === 'billets'     && <Billets     onNavigate={navigate} />}
-            {page === 'partenaires' && <Partenaires />}
-            {page === 'contact'     && <Contact />}
-          </motion.div>
-        </AnimatePresence>
+      <main style={{ position: 'relative', zIndex: 1, paddingTop: 70 }}>
+        <div key={page}>
+          {page === 'accueil'     && <Accueil onNavigate={navigate} />}
+          {page === 'spectacle'   && <Spectacle />}
+          {page === 'artistes'    && <Artistes />}
+          {page === 'billets'     && <Billets />}
+          {page === 'partenaires' && <Partenaires />}
+          {page === 'contact'     && <Contact />}
+        </div>
 
         {/* Newsletter + Footer */}
-        <div style={{ position: 'relative', zIndex: 1, borderTop: '1px solid rgba(153,0,255,0.2)', marginTop: 20 }}>
-          <div style={{ maxWidth: 1080, margin: '0 auto', padding: 'clamp(46px,6vw,72px) clamp(18px,5vw,48px)', textAlign: 'center' }}>
-            <div style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: '#C9A84C' }}>Newsletter</div>
-            <h2 style={{ margin: '12px 0 0', fontFamily: "'Clash Display', sans-serif", fontWeight: 600, fontSize: 'clamp(24px,4vw,40px)' }}>
-              Embarquez avant tout le monde
-            </h2>
-            <p style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.65)', marginTop: 10 }}>
-              Accès anticipé à la billetterie · annonces du plateau · coulisses.
-            </p>
-
+        <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 clamp(14px,4vw,40px) clamp(20px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ border: BORDER, padding: 'clamp(24px,4vw,40px)', display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ maxWidth: 520 }}>
+              <div style={{ fontSize: 'clamp(24px,3.4vw,34px)', fontWeight: 500 }}>Embarquez avant tout le monde</div>
+              <p style={{ fontSize: 15, color: dim(0.68), margin: '8px 0 0' }}>Accès anticipé à la billetterie, annonces du plateau, coulisses.</p>
+            </div>
             {subscribed ? (
-              <div style={{ fontFamily: "'Clash Display', sans-serif", fontWeight: 600, fontSize: 18, color: '#C9A84C', marginTop: 22 }}>
-                Bienvenue à bord. ✦
-              </div>
+              <div style={{ fontSize: 18, color: GREEN }}>&gt; Bienvenue à bord.</div>
             ) : (
-              <form onSubmit={handleSubscribe} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', maxWidth: 480, margin: '22px auto 0' }}>
+              <form onSubmit={handleSubscribe} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, flex: '1 1 340px', maxWidth: 480 }}>
                 <input
                   required
                   name="email"
                   type="email"
                   placeholder="votre@email.com"
-                  style={{ flex: 1, minWidth: 200, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', padding: '14px 16px', fontSize: 15 }}
+                  aria-label="Adresse e-mail"
+                  style={{ flex: 1, minWidth: 200, background: '#000', border: BORDER, color: '#F4E8F8', padding: '12px 14px', fontSize: 16 }}
                 />
-                <button
-                  type="submit"
-                  disabled={subLoading}
-                  style={{ cursor: subLoading ? 'wait' : 'pointer', border: '1px solid #9900FF', background: '#9900FF', color: '#fff', fontWeight: 500, fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '14px 26px', opacity: subLoading ? 0.7 : 1 }}
-                >
-                  S'abonner
+                <button type="submit" disabled={subLoading} className="btn btn-primary" style={{ fontSize: 16, padding: '12px 24px', boxShadow: 'none' }}>
+                  S&apos;abonner
                 </button>
               </form>
             )}
           </div>
-
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.5)' }}>
-            <div style={{ maxWidth: 1180, margin: '0 auto', padding: '34px clamp(18px,5vw,48px)', display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'center', justifyContent: 'space-between' }}>
-              <div>
-                <div style={{ fontFamily: "'Clash Display', sans-serif", fontWeight: 700, fontSize: 22, letterSpacing: '0.16em' }}>MIDAS</div>
-                <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>
-                  Cabaret SF pluridisciplinaire · Strasbourg · 19 &amp; 20 février 2027
-                </div>
-              </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>
-                Association MIDAS · Loi 1908<br />
-                Dysteel Music · © {new Date().getFullYear()}
-              </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between', padding: '6px 2px', fontSize: 13, color: dim(0.55) }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+              <span style={{ background: PINK, color: INK, padding: '2px 10px' }}>Cabaret MIDAS</span>
+              <span>Édition I – AECHOLA · Strasbourg · 16 janvier 2027</span>
             </div>
+            <div>Association MIDAS · Loi 1908 · Dysteel Music · © {new Date().getFullYear()}</div>
           </div>
         </div>
       </main>

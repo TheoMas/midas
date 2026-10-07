@@ -13,9 +13,9 @@ interface RevealProps {
 export default function Reveal({ children, style, className, delay = 0 }: RevealProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-6% 0px' }}
+      viewport={{ once: true, amount: 0.06 }}
       transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1], delay }}
       style={style}
       className={className}

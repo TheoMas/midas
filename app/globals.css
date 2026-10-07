@@ -1,24 +1,13 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Clash Display';
-  src: url('https://cdn.fontshare.com/wf/2GQIT54GKQY3JRFTSHS4ARTRNRQISSAA/3CIP5EBHRRHE5FVQU3VFROPUERNDSTDF/JTSL5QESUXATU47LCPUNHZQBDDIWDOSW.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Clash Display';
-  src: url('https://cdn.fontshare.com/wf/FPDAZ2S6SW4QMSRIIKNNGTPM6VIXYMKO/5HNPQ453FRLIQWV2FNOBUU3FKTDZQVSG/Z3MGHFHX6DCTLQ55LJYRJ5MDCZPMFZU6.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Clash Display';
-  src: url('https://cdn.fontshare.com/wf/BFBSY7LX5W2U2EROCLVVTQP4VS7S4PC3/IIUX4FGTMD2LK2VWD3RVTAS4SSMUN7B5/53RZKGODFYDW3QHTIL7IPOWTBCSUEZK7.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
+:root {
+  --pink: #E0A8F2;
+  --pink-light: #F2CCFB;
+  --green: #A8F0A0;
+  --ink: #1A0F1E;
+  --text: #F4E8F8;
+  --muted: #5A4F5E;
+  --muted-hover: #6E6172;
 }
 
 *, *::before, *::after {
@@ -33,14 +22,14 @@ html, body {
 }
 
 body {
-  font-family: 'Supreme', system-ui, -apple-system, sans-serif;
-  color: #fff;
+  font-family: 'Jost', system-ui, -apple-system, sans-serif;
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: #9900FF;
-  color: #fff;
+  background: var(--pink);
+  color: var(--ink);
 }
 
 input, textarea, button {
@@ -49,52 +38,74 @@ input, textarea, button {
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: #9900FF !important;
+  border-color: var(--green) !important;
 }
 
-a {
-  color: inherit;
-}
+a { color: var(--pink); }
+a:hover { color: var(--green); }
 
-@keyframes neb {
-  0%   { opacity: .7; transform: translateY(0) scale(1); }
-  100% { opacity: 1;  transform: translateY(-2%) scale(1.05); }
+/* Boutons */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .15s, color .15s;
 }
-
-@keyframes gT {
-  0%,100% { clip-path: inset(0 0 80% 0);  transform: translate(-2px, -1px); }
-  20%     { clip-path: inset(20% 0 30% 0); transform: translate(3px, 1px); }
-  40%     { clip-path: inset(60% 0 5% 0);  transform: translate(-3px, 1px); }
-  60%     { clip-path: inset(10% 0 60% 0); transform: translate(2px, -2px); }
-  80%     { clip-path: inset(40% 0 40% 0); transform: translate(-1px, 2px); }
+.btn-primary {
+  background: var(--pink);
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
 }
-
-@keyframes gB {
-  0%,100% { clip-path: inset(70% 0 0 0);  transform: translate(2px, 1px); }
-  25%     { clip-path: inset(30% 0 40% 0); transform: translate(-3px, -1px); }
-  50%     { clip-path: inset(5% 0 70% 0);  transform: translate(3px, 2px); }
-  75%     { clip-path: inset(50% 0 20% 0); transform: translate(-2px, -1px); }
+.btn-primary:hover { background: var(--pink-light); color: var(--ink); }
+.btn-ghost {
+  background: var(--muted);
+  color: var(--pink);
 }
+.btn-ghost:hover { background: var(--muted-hover); color: var(--pink-light); }
+.btn:disabled { opacity: .7; cursor: wait; }
 
-@keyframes spinCW  { to { transform: rotate(360deg);  } }
-@keyframes spinCCW { to { transform: rotate(-360deg); } }
-
-@keyframes pulse {
-  0%,100% { opacity: .55; transform: scale(1); }
-  50%     { opacity: 1;   transform: scale(1.04); }
+.social-link {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 2px solid rgba(224, 168, 242, 0.3);
+  transition: border-color .15s;
 }
-
-@keyframes floatY {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-10px); }
-}
+.social-link:hover { border-bottom-color: var(--pink); }
 
 @keyframes blink {
-  0%,100% { opacity: 1; }
-  50%     { opacity: .25; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: .2; }
 }
 
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(.92); }
+  70% { opacity: 1; transform: scale(1.02); }
+  100% { transform: none; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: none; }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
