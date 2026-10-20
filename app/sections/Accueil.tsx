@@ -19,7 +19,7 @@ const disciplines = [
   { l: 'S', n: 'tand-up',      d: 'Le rire propulsé à la vitesse lumière.' },
 ]
 
-const participants = ['Najim Ziani', 'Laurine Defrance', "Imp'Out", 'Nōxïmā Marley', 'Spectrum Crew']
+const participants = ['Najim Ziani', 'Laurine Defrance', "Imp'Out"]
 
 const popupMsgs = [
   '',
@@ -70,7 +70,7 @@ export default function Accueil({ onNavigate }: Props) {
           </div>
           <div>
             <h1 style={{ margin: 0, fontWeight: 600, fontSize: 'clamp(64px,13vw,168px)', lineHeight: 0.88, letterSpacing: '0.02em', color: PINK }}>MIDAS</h1>
-            <p style={{ margin: '16px 0 0', fontSize: 'clamp(18px,2.4vw,26px)', fontWeight: 500, color: TEXT }}>Un format inédit en France.</p>
+            <p style={{ margin: '16px 0 0', fontSize: 'clamp(18px,2.4vw,26px)', fontWeight: 500, color: TEXT }}>Un format inédit à Strasbourg.</p>
             <p style={{ margin: '10px 0 0', maxWidth: 560, fontSize: 16, lineHeight: 1.65, color: dim(0.72) }}>
               Musique, improvisation, danse, art et stand-up réunis sur une même scène, dans un univers de science-fiction narratif, le temps d&apos;une soirée.
             </p>

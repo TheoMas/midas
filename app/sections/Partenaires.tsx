@@ -20,7 +20,7 @@ export default function Partenaires() {
         <div style={{ maxWidth: 540 }}>
           <div style={{ fontSize: 'clamp(26px,3.5vw,36px)', fontWeight: 500 }}>Devenir partenaire</div>
           <p style={{ fontSize: 15.5, lineHeight: 1.7, color: dim(0.72), margin: '10px 0 0' }}>
-            Associez votre marque à un format inédit en France. Recevez notre dossier de partenariat et embarquez avec nous.
+            Associez votre marque à un format inédit à Strasbourg. Recevez notre dossier de partenariat et embarquez avec nous.
           </p>
         </div>
         <a href="mailto:dysteel.music@gmail.com?subject=Partenariat%20Cabaret%20MIDAS" className="btn btn-primary" style={{ fontSize: 17, padding: '12px 28px' }}>

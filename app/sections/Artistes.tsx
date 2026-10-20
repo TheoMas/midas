@@ -5,8 +5,6 @@ const artists = [
   { name: 'Najim Ziani',        disc: 'Stand-up',     tag: "Tête d'affiche",     code: '08-768' },
   { name: 'Laurine Defrance',   disc: 'Stand-up',     tag: "Tête d'affiche",     code: '08-457' },
   { name: "Imp'Out",            disc: 'Improvisation', tag: 'Troupe',            code: '08-695' },
-  { name: 'Nōxïmā Marley',      disc: 'Drag',         tag: 'Performance',        code: '08-433' },
-  { name: 'Spectrum Crew',      disc: 'Danse',        tag: 'Crew',               code: '08-512' },
   { name: 'Atelier Obturation', disc: 'Photographie', tag: "Capteur d'instants", code: '08-301' },
   { name: 'Dysteel',            disc: 'Musique live', tag: "L'équipage sonore",  code: '08-119' },
 ]
