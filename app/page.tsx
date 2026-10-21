@@ -102,7 +102,7 @@ export default function MidasPage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2, textAlign: 'right' }}>
               <span>Association MIDAS · Dysteel Music · © {new Date().getFullYear()}</span>
-              <span>Affiche : Anaïs Brobeck · Site : Theo Mas</span>
+              <span>Affiche : Anaïs Brobeck · Site : Théo Mas</span>
             </div>
           </div>
         </div>

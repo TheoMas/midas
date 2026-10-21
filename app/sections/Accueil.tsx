@@ -47,9 +47,6 @@ export default function Accueil({ onNavigate }: Props) {
       {/* Hero */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
         <div style={{ flex: '1 1 560px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <div style={{ ...box, padding: 'clamp(10px,2vw,18px)' }}>
-          <Staff />
-        </div>
         <div style={{ ...box, flex: 1, padding: 'clamp(20px,3vw,34px)', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ flex: '1 1 260px', display: 'flex', justifyContent: 'center' }}>
@@ -209,23 +206,6 @@ export default function Accueil({ onNavigate }: Props) {
         </p>
       </Reveal>
     </section>
-  )
-}
-
-/** Portée musicale verte qui ondule, notes roses. */
-function Staff() {
-  const notes: [number, number, string][] = [[38, 112, '♫'], [118, 72, '♪'], [146, 92, '♪'], [338, 130, '♪'], [372, 152, '♫'], [392, 72, '♪'], [418, 60, '♪']]
-  return (
-    <svg viewBox="0 0 480 170" aria-hidden style={{ width: '100%', height: 'auto', display: 'block' }} fill="none">
-      <g stroke={GREEN} strokeWidth={1.6}>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <path key={i} d={`M0 ${40 + i * 16} C 120 ${30 + i * 14}, 200 ${70 + i * 18}, 290 ${118 + i * 9} S 420 ${150 - i * 4}, 480 ${70 + i * 5}`} />
-        ))}
-      </g>
-      <g fill={PINK} fontSize={38} fontFamily="serif">
-        {notes.map(([x, y, n], i) => <text key={i} x={x} y={y}>{n}</text>)}
-      </g>
-    </svg>
   )
 }
 
