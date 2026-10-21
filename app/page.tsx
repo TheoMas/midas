@@ -100,7 +100,10 @@ export default function MidasPage() {
               <span style={{ background: PINK, color: INK, padding: '2px 10px' }}>Cabaret MIDAS</span>
               <span>Édition I – AECHOLA · Strasbourg · 16 janvier 2027</span>
             </div>
-            <div>Association MIDAS · Loi 1908 · Dysteel Music · © {new Date().getFullYear()}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, textAlign: 'right' }}>
+              <span>Association MIDAS · Dysteel Music · © {new Date().getFullYear()}</span>
+              <span>Affiche : Anaïs Brobeck · Site : Theo Mas</span>
+            </div>
           </div>
         </div>
       </main>

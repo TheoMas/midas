@@ -4,12 +4,13 @@ import { useEffect } from 'react'
 import Reveal from '@/app/components/Reveal'
 import { BORDER, GREEN, PageHeader, RetroWindow, Tag, dim, sectionStyle } from '@/app/components/ui'
 
-const HELLOASSO_WIDGET = 'https://www.helloasso.com/associations/association-midas/adhesions/adhesion-association-midas/widget'
+const HELLOASSO_WIDGET = 'https://www.helloasso.com/associations/association-midas/evenements/cabaret-midas/widget'
 
 const tiers = [
-  { name: 'Passager',   price: '12–15 €', desc: 'Accès à la soirée',  feat: false, list: ['Entrée standard', 'Sans placement', 'Embarquement libre'] },
-  { name: 'Équipier',   price: '22–28 €', desc: 'Placement standard', feat: false, list: ['Place assise garantie', 'Placement standard', 'Programme de bord'] },
-  { name: 'Commandant', price: '35–40 €', desc: "L'expérience VIP",   feat: true,  list: ['Accueil privilégié', 'Placement premium', 'Accès passerelle VIP'] },
+  { name: 'Passager',   price: '15 €',      desc: 'Accès à la soirée',     feat: false, list: ['Entrée standard', 'Sans placement', 'Embarquement libre'] },
+  { name: 'Équipier',   price: '25 €',      desc: 'Placement standard',    feat: false, list: ['Place assise garantie', 'Placement standard', 'Programme de bord'] },
+  { name: 'Équipage',   price: '80 €',      desc: 'Pack 4 personnes',      feat: false, list: ['4 places', 'Embarquez à plusieurs', 'Programme de bord'] },
+  { name: 'Commandant', price: 'dès 30 €',  desc: 'Prix libre',            feat: true,  list: ['Vous fixez votre prix', 'Soutien direct au projet', 'Accueil privilégié'] },
 ]
 
 function scrollToWidget() {
@@ -33,7 +34,7 @@ export default function Billets() {
   return (
     <section style={sectionStyle}>
       <PageHeader tag="Embarquement" title="Réserver">
-        Choisissez votre place à bord. Trois niveaux d&apos;embarquement pour la soirée du 16 janvier.
+        Choisissez votre place à bord. Quatre formules d&apos;embarquement pour la soirée du 16 janvier.
       </PageHeader>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,270px),1fr))', gap: 14 }}>
@@ -57,7 +58,6 @@ export default function Billets() {
           </Reveal>
         ))}
       </div>
-      <div style={{ fontSize: 13.5, color: dim(0.55) }}>&gt; Tarifs indicatifs, à confirmer avant l&apos;ouverture de la billetterie.</div>
 
       <RetroWindow id="ha-anchor" title="Paiement sécurisé · HelloAsso" style={{ margin: '14px 12px 12px 0' }} bodyStyle={{ padding: 'clamp(12px,2vw,20px)', background: '#fff' }}>
         <iframe

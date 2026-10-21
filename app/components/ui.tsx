@@ -72,12 +72,12 @@ const M_BITMAP = [
 const M_CELLS = M_BITMAP.join('').split('').map((ch) => ch === '#')
 
 /** Logo « M » pixelisé, incliné. */
-export function MidasMark({ width, style }: { width: number | string; style?: CSSProperties }) {
+export function MidasMark({ width, color = PINK, style }: { width: number | string; color?: string; style?: CSSProperties }) {
   return (
     <div aria-hidden style={{ width, display: 'grid', gridTemplateColumns: 'repeat(9,1fr)', transform: 'skewX(-14deg)', ...style }}>
       {M_CELLS.map((on, i) => (
         <div key={i} style={{ aspectRatio: '1' }}>
-          {on && <div style={{ width: '100%', height: '100%', background: PINK }} />}
+          {on && <div style={{ width: '100%', height: '100%', background: color }} />}
         </div>
       ))}
     </div>

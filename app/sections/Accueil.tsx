@@ -3,13 +3,11 @@
 import { useState } from 'react'
 import Countdown from '@/app/components/Countdown'
 import Reveal from '@/app/components/Reveal'
-import { FACE_LINES } from '@/app/components/faceLines'
+import Globe from '@/app/components/Globe'
 import { BORDER, GREEN, MidasMark, PINK, RetroWindow, TEXT, Tag, box, dim } from '@/app/components/ui'
 import type { Page } from '@/app/types'
 
 const HELLOASSO = 'https://www.helloasso.com/associations/association-midas/adhesions/adhesion-association-midas'
-
-const codes = ['16-01', '20-00', '67-000', '08-250']
 
 const disciplines = [
   { l: 'M', n: 'usique',       d: 'Le live qui fait vibrer la coque du vaisseau.' },
@@ -29,7 +27,7 @@ const popupMsgs = [
 ]
 
 const corner = (pos: React.CSSProperties): React.CSSProperties => ({ position: 'absolute', width: 34, height: 34, ...pos })
-const edge = `3px solid ${PINK}`
+const edge = `3px solid ${GREEN}`
 
 interface Props { onNavigate: (p: Page) => void }
 
@@ -48,33 +46,37 @@ export default function Accueil({ onNavigate }: Props) {
 
       {/* Hero */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-        <div style={{ ...box, flex: '1 1 560px', minWidth: 0, padding: 'clamp(20px,3vw,34px)', display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'stretch' }}>
-            <div style={{ flex: '1 1 260px', position: 'relative', minHeight: 280, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-              <div style={corner({ top: 0, left: 0, borderTop: edge, borderLeft: edge })} />
-              <div style={corner({ top: 0, right: 0, borderTop: edge, borderRight: edge })} />
-              <div style={corner({ bottom: 0, left: 0, borderBottom: edge, borderLeft: edge })} />
-              <div style={corner({ bottom: 0, right: 0, borderBottom: edge, borderRight: edge })} />
-              <svg viewBox="0 0 200 300" aria-label="Visage wireframe" style={{ height: 340, maxWidth: '100%', display: 'block' }} fill="none" stroke={PINK} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                {FACE_LINES.map(([x1, y1, x2, y2], i) => <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />)}
-              </svg>
+        <div style={{ flex: '1 1 560px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ ...box, padding: 'clamp(10px,2vw,18px)' }}>
+          <Staff />
+        </div>
+        <div style={{ ...box, flex: 1, padding: 'clamp(20px,3vw,34px)', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ flex: '1 1 260px', display: 'flex', justifyContent: 'center' }}>
+              <Globe size={320} />
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16, textAlign: 'right' }}>
-              {codes.map((c) => (
-                <div key={c} style={{ lineHeight: 1.15 }}>
-                  <div style={{ fontSize: 16, fontWeight: 500, color: PINK }}>target code</div>
-                  <div style={{ fontSize: 19, fontWeight: 500, color: GREEN }}>{c}</div>
-                </div>
-              ))}
+            <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'stretch', gap: 18, alignSelf: 'stretch', padding: '8px 0' }}>
+              <div aria-hidden style={{ width: 22, borderTop: `2px solid ${PINK}`, borderRight: `2px solid ${PINK}`, position: 'relative' }}>
+                <div style={{ position: 'absolute', top: '22%', right: 0, width: 22, height: 2, background: PINK }} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontSize: 'clamp(34px,4.4vw,46px)', fontWeight: 500, lineHeight: 1, color: TEXT }}>
+                <span>16</span>
+                <span style={{ width: '100%', height: 2, background: TEXT, margin: '12px 0' }} />
+                <span>01</span>
+                <span style={{ width: '100%', height: 2, background: TEXT, margin: '12px 0' }} />
+                <span>20</span>
+                <span>27</span>
+              </div>
             </div>
           </div>
           <div>
             <h1 style={{ margin: 0, fontWeight: 600, fontSize: 'clamp(64px,13vw,168px)', lineHeight: 0.88, letterSpacing: '0.02em', color: PINK }}>MIDAS</h1>
-            <p style={{ margin: '16px 0 0', fontSize: 'clamp(18px,2.4vw,26px)', fontWeight: 500, color: TEXT }}>Un format inédit à Strasbourg.</p>
+            <p style={{ margin: '16px 0 0', fontSize: 'clamp(18px,2.4vw,26px)', fontWeight: 500, color: TEXT }}>Une soirée unique à Strasbourg.</p>
             <p style={{ margin: '10px 0 0', maxWidth: 560, fontSize: 16, lineHeight: 1.65, color: dim(0.72) }}>
               Musique, improvisation, danse, art et stand-up réunis sur une même scène, dans un univers de science-fiction narratif, le temps d&apos;une soirée.
             </p>
           </div>
+        </div>
         </div>
 
         <div style={{ flex: '1 1 300px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -96,7 +98,7 @@ export default function Accueil({ onNavigate }: Props) {
                 [0, 60, 68, 86], [0, 140, 68, 114], [200, 60, 132, 86], [200, 140, 132, 114],
               ].map(([x1, y1, x2, y2], i) => <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} vectorEffect="non-scaling-stroke" />)}
             </svg>
-            <MidasMark width={64} style={{ position: 'relative' }} />
+            <MidasMark width={64} color={GREEN} style={{ position: 'relative' }} />
           </div>
         </div>
       </div>
@@ -130,6 +132,7 @@ export default function Accueil({ onNavigate }: Props) {
               {[0, 75, 150, 225, 300].map((x) => <line key={`v${x}`} x1={x} y1={0} x2={x} y2={150} />)}
               {[0, 50, 100, 150].map((y) => <line key={`h${y}`} x1={0} y1={y} x2={300} y2={y} />)}
             </g>
+            <path d="M0 115 C 40 95, 80 70, 130 75 S 200 105, 230 60 S 280 70, 300 80" stroke={GREEN} strokeWidth={2.5} />
             <path d="M0 95 C 30 140, 60 140, 85 100 S 120 70, 150 110 S 190 150, 215 70 S 245 -5, 262 60 S 285 120, 300 105" stroke={PINK} strokeWidth={3} />
           </svg>
           <div>
@@ -157,6 +160,11 @@ export default function Accueil({ onNavigate }: Props) {
       {/* Participation + date + lieu */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
         <Reveal style={{ ...box, flex: '1 1 300px', minWidth: 0, padding: 'clamp(20px,3vw,30px)' }}>
+          <div aria-hidden style={{ position: 'relative', height: 150, marginBottom: 22 }}>
+            <div style={corner({ top: 0, left: 0, borderTop: edge, borderLeft: edge })} />
+            <div style={corner({ bottom: 0, left: 0, borderBottom: edge, borderLeft: edge })} />
+            <div style={corner({ bottom: 0, right: 0, borderBottom: edge, borderRight: edge })} />
+          </div>
           <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>Avec la participation de :</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 16 }}>
             {participants.map((n) => (
@@ -201,6 +209,23 @@ export default function Accueil({ onNavigate }: Props) {
         </p>
       </Reveal>
     </section>
+  )
+}
+
+/** Portée musicale verte qui ondule, notes roses. */
+function Staff() {
+  const notes: [number, number, string][] = [[38, 112, '♫'], [118, 72, '♪'], [146, 92, '♪'], [338, 130, '♪'], [372, 152, '♫'], [392, 72, '♪'], [418, 60, '♪']]
+  return (
+    <svg viewBox="0 0 480 170" aria-hidden style={{ width: '100%', height: 'auto', display: 'block' }} fill="none">
+      <g stroke={GREEN} strokeWidth={1.6}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <path key={i} d={`M0 ${40 + i * 16} C 120 ${30 + i * 14}, 200 ${70 + i * 18}, 290 ${118 + i * 9} S 420 ${150 - i * 4}, 480 ${70 + i * 5}`} />
+        ))}
+      </g>
+      <g fill={PINK} fontSize={38} fontFamily="serif">
+        {notes.map(([x, y, n], i) => <text key={i} x={x} y={y}>{n}</text>)}
+      </g>
+    </svg>
   )
 }
 

@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { BORDER, GREEN, PINK, PageHeader, TEXT, box, sectionStyle } from '@/app/components/ui'
+import { BORDER, GREEN, PINK, PageHeader, TEXT, Tag, box, sectionStyle } from '@/app/components/ui'
+
+const DYSTEEL_SITE = 'https://dysteel.crevado.com'
 
 const socials = [
   { name: 'Instagram',  url: 'https://instagram.com/dysteel.music',                    handle: '@dysteel.music' },
@@ -50,23 +52,38 @@ export default function Contact() {
       <PageHeader tag="Liaison" title="Contact" />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 14 }}>
-        <div style={{ ...box, padding: 'clamp(22px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 22 }}>
-          <div>
-            <div style={{ fontSize: 14, color: GREEN }}>e-mail</div>
-            <a href="mailto:dysteel.music@gmail.com" style={bigLink}>dysteel.music@gmail.com</a>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ ...box, padding: 'clamp(22px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 22 }}>
+            <Tag>Association MIDAS</Tag>
+            <div>
+              <div style={{ fontSize: 14, color: GREEN }}>e-mail</div>
+              <a href="mailto:contact@associationmidas.fr" style={bigLink}>contact@associationmidas.fr</a>
+            </div>
           </div>
-          <div>
-            <div style={{ fontSize: 14, color: GREEN }}>téléphone</div>
-            <a href="tel:+33687776252" style={bigLink}>06 87 77 62 52</a>
-          </div>
-          <div>
-            <div style={{ fontSize: 14, color: GREEN, marginBottom: 6 }}>réseaux</div>
-            {socials.map((s) => (
-              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-link">
-                <span style={{ fontSize: 18, fontWeight: 500, color: TEXT }}>{s.name}</span>
-                <span style={{ fontSize: 14, color: PINK }}>{s.handle} ↗</span>
-              </a>
-            ))}
+
+          <div style={{ ...box, padding: 'clamp(22px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 22 }}>
+            <Tag>Dysteel</Tag>
+            <div>
+              <div style={{ fontSize: 14, color: GREEN }}>e-mail</div>
+              <a href="mailto:dysteel.music@gmail.com" style={bigLink}>dysteel.music@gmail.com</a>
+            </div>
+            <div>
+              <div style={{ fontSize: 14, color: GREEN }}>téléphone</div>
+              <a href="tel:+33687776252" style={bigLink}>06 87 77 62 52</a>
+            </div>
+            <div>
+              <div style={{ fontSize: 14, color: GREEN }}>site</div>
+              <a href={DYSTEEL_SITE} target="_blank" rel="noopener noreferrer" style={bigLink}>dysteel.crevado.com ↗</a>
+            </div>
+            <div>
+              <div style={{ fontSize: 14, color: GREEN, marginBottom: 6 }}>réseaux</div>
+              {socials.map((s) => (
+                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="social-link">
+                  <span style={{ fontSize: 18, fontWeight: 500, color: TEXT }}>{s.name}</span>
+                  <span style={{ fontSize: 14, color: PINK }}>{s.handle} ↗</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
