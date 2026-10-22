@@ -7,7 +7,7 @@ import Globe from '@/app/components/Globe'
 import { BORDER, GREEN, MidasMark, PINK, RetroWindow, TEXT, Tag, box, dim } from '@/app/components/ui'
 import type { Page } from '@/app/types'
 
-const HELLOASSO = 'https://www.helloasso.com/associations/association-midas/adhesions/adhesion-association-midas'
+const HELLOASSO = 'https://www.helloasso.com/associations/association-midas/evenements/cabaret-midas'
 
 const disciplines = [
   { l: 'M', n: 'usique',       d: 'Le live qui fait vibrer la coque du vaisseau.' },
@@ -181,20 +181,20 @@ export default function Accueil({ onNavigate }: Props) {
         </Reveal>
       </div>
 
-      {/* Adhésion HelloAsso */}
+      {/* Billetterie HelloAsso */}
       <div style={{ ...box, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'flex-start' }}>
         <div style={{ flex: '1 1 300px', minWidth: 0 }}>
-          <Tag>Rejoindre l&apos;association</Tag>
-          <h2 style={{ margin: '16px 0 0', fontSize: 'clamp(28px,4vw,42px)', fontWeight: 500, lineHeight: 1.1 }}>Devenez membre de l&apos;équipage.</h2>
+          <Tag>Billetterie</Tag>
+          <h2 style={{ margin: '16px 0 0', fontSize: 'clamp(28px,4vw,42px)', fontWeight: 500, lineHeight: 1.1 }}>Réservez votre place à bord.</h2>
           <p style={{ margin: '12px 0 0', maxWidth: 440, fontSize: 15.5, lineHeight: 1.65, color: dim(0.72) }}>
-            Adhérez à l&apos;Association MIDAS et soutenez la création du cabaret. Paiement sécurisé via HelloAsso.
+            Billetterie officielle du Cabaret MIDAS. Paiement sécurisé via HelloAsso.
           </p>
           <div style={{ marginTop: 22, maxWidth: 420 }}>
-            <iframe id="haWidgetButton" title="Adhérer via HelloAsso" src={`${HELLOASSO}/widget-bouton`} style={{ width: '100%', height: 70, border: 'none' }} />
+            <iframe id="haWidgetButton" title="Réserver via HelloAsso" src={`${HELLOASSO}/widget-bouton`} style={{ width: '100%', height: 70, border: 'none' }} />
           </div>
         </div>
         <div style={{ flex: '1 1 340px', minWidth: 0, maxWidth: 460 }}>
-          <iframe id="haWidgetVignette" title="Adhésion Association MIDAS" src={`${HELLOASSO}/widget-vignette`} style={{ width: '100%', height: 513, border: 'none' }} />
+          <iframe id="haWidgetVignette" title="Billetterie Cabaret MIDAS" src={`${HELLOASSO}/widget-vignette`} style={{ width: '100%', height: 513, border: 'none' }} />
         </div>
       </div>
 

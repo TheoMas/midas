@@ -3,7 +3,7 @@ import { GREEN, PINK, PageHeader, Tag, box, dim, sectionStyle } from '@/app/comp
 
 const artists = [
   { name: 'Najim Ziani',        disc: 'Stand-up',     tag: 'Humoriste',          code: '08-768' },
-  { name: 'Laurine Defrance',   disc: 'Stand-up',     tag: "Tête d'affiche",     code: '08-457' },
+  { name: 'Laurine Defrance',   disc: 'Stand-up',     tag: 'Humoriste',          code: '08-457' },
   { name: "Imp'Out",            disc: 'Improvisation', tag: 'Troupe',            code: '08-695' },
   { name: 'Atelier Obturation', disc: 'Photographie', tag: "Capteur d'instants", code: '08-301' },
   { name: 'Dysteel',            disc: 'Musique live', tag: "L'équipage sonore",  code: '08-119' },
