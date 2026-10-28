@@ -2,9 +2,9 @@ import Reveal from '@/app/components/Reveal'
 import { GREEN, PINK, Tag, box, dim, sectionStyle } from '@/app/components/ui'
 
 const experience = [
-  { t: "L'immersion", d: 'Un décor SF, une lumière vivante, un son qui enveloppe.' },
+  { t: "L'immersion", d: 'Pas un décor, une ambiance : une lumière vivante, un son qui enveloppe.' },
   { t: 'Le vivant',   d: "Musique, stand-up et cinéma en direct : rien n'est tout à fait joué d'avance." },
-  { t: 'La fusion',   d: 'Cinq arts qui se répondent sur une même scène, sans frontière.' },
+  { t: 'La fusion',   d: 'Une même scène qui accueille successivement cinq disciplines différentes.' },
 ]
 
 const note = { fontSize: 13.5, color: dim(0.5), margin: 0 }
