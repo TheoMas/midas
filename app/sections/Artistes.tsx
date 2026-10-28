@@ -7,8 +7,8 @@ import { GREEN, PINK, PageHeader, SHOW_AT, Tag, box, dim, sectionStyle } from '@
 interface Artist { name: string; disc: string; tag: string; code: string; photo?: string; logo?: boolean; insta?: string }
 
 const artists: Artist[] = [
-  { name: 'Najim Ziani',      disc: 'Stand-up',      tag: 'Humoriste',         code: '08-768', photo: '/artistes/najim-ziani.png', insta: 'najim.ziani' },
-  { name: 'Laurine Defrance', disc: 'Stand-up',      tag: 'Humoriste',         code: '08-457', photo: '/artistes/laurine-defrance.png', insta: 'laurine.defrance' },
+  { name: 'Najim Ziani',      disc: 'Stand-up',      tag: 'Humoriste',         code: '08-768', photo: '/artistes/najim-ziani.jpg', insta: 'najim.ziani' },
+  { name: 'Laurine Defrance', disc: 'Stand-up',      tag: 'Humoriste',         code: '08-457', photo: '/artistes/laurine-defrance.jpg', insta: 'laurine.defrance' },
   { name: 'Clyventz',         disc: 'Stand-up',      tag: 'Humoriste · MC de la soirée', code: '08-512', photo: '/artistes/clyventz.jpg', insta: 'clyventz_standup' },
   { name: "Imp'Out",          disc: 'Improvisation', tag: 'Troupe',            code: '08-695', photo: '/artistes/impout.png', logo: true, insta: 'impout67' },
   { name: 'Dysteel',          disc: 'Musique live',  tag: "L'équipage sonore", code: '08-119', photo: '/artistes/dysteel.png', logo: true, insta: 'dysteel.music' },
