@@ -72,17 +72,19 @@ const M_BITMAP = [
   '##.....##',
   '##.....##',
 ]
-const M_CELLS = M_BITMAP.join('').split('').map((ch) => ch === '#')
+// Une ligne de cellules contiguës = un seul <rect> (pas de joints entre cellules).
+const M_RUNS = M_BITMAP.flatMap((row, y) =>
+  [...row.matchAll(/#+/g)].map((m) => ({ x: m.index ?? 0, y, w: m[0].length })),
+)
+const M_SKEW = Math.tan((14 * Math.PI) / 180) * M_BITMAP.length
 
-/** Logo « M » pixelisé, incliné. */
+/** Logo « M » pixelisé, incliné. L'inclinaison est incluse dans la viewBox : le logo reste dans sa boîte. */
 export function MidasMark({ width, color = PINK, style }: { width: number | string; color?: string; style?: CSSProperties }) {
   return (
-    <div aria-hidden style={{ width, display: 'grid', gridTemplateColumns: 'repeat(9,1fr)', transform: 'skewX(-14deg)', ...style }}>
-      {M_CELLS.map((on, i) => (
-        <div key={i} style={{ aspectRatio: '1' }}>
-          {on && <div style={{ width: '100%', height: '100%', background: color }} />}
-        </div>
-      ))}
-    </div>
+    <svg aria-hidden viewBox={`0 0 ${9 + M_SKEW} ${M_BITMAP.length}`} style={{ width, height: 'auto', display: 'block', ...style }}>
+      <g transform={`translate(${M_SKEW} 0) skewX(-14)`} fill={color}>
+        {M_RUNS.map((r) => <rect key={`${r.x}-${r.y}`} x={r.x} y={r.y} width={r.w} height={1.02} />)}
+      </g>
+    </svg>
   )
 }

@@ -139,8 +139,8 @@ export default function Accueil({ onNavigate }: Props) {
           </div>
         </Reveal>
 
-        <Reveal style={{ ...box, flex: '2 1 560px', minWidth: 0, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'flex-start' }}>
-          <MidasMark width={210} style={{ flex: '0 1 210px', maxWidth: '100%' }} />
+        <Reveal style={{ ...box, flex: '2 1 560px', minWidth: 0, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'center', justifyContent: 'center' }}>
+          <MidasMark width={240} style={{ flex: '0 1 240px', maxWidth: '100%' }} />
           <div style={{ flex: '1 1 280px', display: 'flex', flexDirection: 'column' }}>
             {disciplines.map((d) => (
               <div key={d.l} style={{ display: 'flex', alignItems: 'stretch', gap: 12 }}>
