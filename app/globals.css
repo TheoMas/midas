@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --pink: #E0A8F2;
-  --pink-light: #F2CCFB;
-  --green: #A8F0A0;
+  --pink: #bb68f1;
+  --pink-light: #d4a0f7;
+  --green: #3ddb00;
   --ink: #1A0F1E;
   --text: #F4E8F8;
   --muted: #5A4F5E;
@@ -62,7 +62,7 @@ a:hover { color: var(--green); }
 .btn-primary:hover { background: var(--pink-light); color: var(--ink); }
 .btn-ghost {
   background: var(--muted);
-  color: var(--pink);
+  color: var(--pink-light);
 }
 .btn-ghost:hover { background: var(--muted-hover); color: var(--pink-light); }
 .btn:disabled { opacity: .7; cursor: wait; }
@@ -73,7 +73,7 @@ a:hover { color: var(--green); }
   justify-content: space-between;
   gap: 16px;
   padding: 11px 0;
-  border-bottom: 2px solid rgba(224, 168, 242, 0.3);
+  border-bottom: 2px solid rgba(187, 104, 241, 0.3);
   transition: border-color .15s;
 }
 .social-link:hover { border-bottom-color: var(--pink); }

@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { BORDER, GREEN, PINK, Tag } from '@/app/components/ui'
+import { BORDER, GREEN, PINK, SHOW_AT, Tag } from '@/app/components/ui'
 
 interface Cd { d: string; h: string; m: string; s: string; progress: number }
 
-const TARGET = new Date('2027-01-16T20:00:00+01:00').getTime()
+const TARGET = SHOW_AT
 const START = new Date('2026-06-01T00:00:00+02:00').getTime()
 
 function pad(n: number) { return String(n).padStart(2, '0') }

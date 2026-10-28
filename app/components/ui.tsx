@@ -1,10 +1,13 @@
 import type { CSSProperties, ReactNode } from 'react'
 
-export const PINK = '#E0A8F2'
-export const GREEN = '#A8F0A0'
+export const PINK = '#bb68f1'
+export const GREEN = '#3ddb00'
 export const INK = '#1A0F1E'
 export const TEXT = '#F4E8F8'
 export const BORDER = `2px solid ${PINK}`
+
+/** Début de la soirée (lancement du compte à rebours, révélation des artistes surprise). */
+export const SHOW_AT = new Date('2027-01-16T20:00:00+01:00').getTime()
 
 export const dim = (a: number) => `rgba(244,232,248,${a})`
 
@@ -47,7 +50,7 @@ export function RetroWindow({ title, children, style, bodyStyle, id }: { title?:
   const ctl: CSSProperties = { width: 18, height: 18, border: `2px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }
   return (
     <div id={id} style={{ ...box, background: '#000', boxShadow: `12px 12px 0 -2px #000, 12px 12px 0 0 ${PINK}`, ...style }}>
-      <div style={{ height: 30, background: `linear-gradient(90deg,#C98BE0,${PINK})`, display: 'flex', justifyContent: title ? 'space-between' : 'flex-end', alignItems: 'center', gap: 4, padding: title ? '0 6px 0 12px' : '0 6px' }}>
+      <div style={{ height: 30, background: `linear-gradient(90deg,#9a4fd0,${PINK})`, display: 'flex', justifyContent: title ? 'space-between' : 'flex-end', alignItems: 'center', gap: 4, padding: title ? '0 6px 0 12px' : '0 6px' }}>
         {title && <span style={{ fontSize: 14, color: INK }}>{title}</span>}
         <span style={{ display: 'flex', gap: 4 }} aria-hidden>
           <span style={{ ...ctl, alignItems: 'flex-end', paddingBottom: 2 }}><span style={{ width: 8, height: 2, background: INK }} /></span>

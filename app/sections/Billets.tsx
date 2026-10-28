@@ -7,10 +7,10 @@ import { BORDER, GREEN, PageHeader, RetroWindow, Tag, dim, sectionStyle } from '
 const HELLOASSO_WIDGET = 'https://www.helloasso.com/associations/association-midas/evenements/cabaret-midas/widget'
 
 const tiers = [
-  { name: 'Passager',   price: '15 €',      desc: 'Accès à la soirée',     feat: false, list: ['Entrée standard', 'Sans placement', 'Embarquement libre'] },
-  { name: 'Équipier',   price: '25 €',      desc: 'Placement standard',    feat: false, list: ['Place assise garantie', 'Placement standard', 'Programme de bord'] },
-  { name: 'Équipage',   price: '80 €',      desc: 'Pack 4 personnes',      feat: false, list: ['4 places', 'Embarquez à plusieurs', 'Programme de bord'] },
-  { name: 'Commandant', price: 'dès 30 €',  desc: 'Prix libre',            feat: true,  list: ['Vous fixez votre prix', 'Soutien direct au projet', 'Accueil privilégié'] },
+  { name: 'Passager',   price: '15 €',      desc: 'Accès à la soirée',                     feat: false },
+  { name: 'Équipier',   price: '25 €',      desc: 'Tarif standard',                        feat: false },
+  { name: 'Équipage',   price: '80 €',      desc: 'Pack 4 personnes',                      feat: false },
+  { name: 'Commandant', price: 'dès 30 €',  desc: 'Prix libre — soutien direct au projet', feat: true  },
 ]
 
 function scrollToWidget() {
@@ -42,18 +42,10 @@ export default function Billets() {
           <Reveal key={t.name} style={{ display: 'flex', flexDirection: 'column', border: BORDER, padding: 'clamp(22px,3vw,30px)', position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
               <Tag size={15} style={{ padding: '2px 12px' }}>{t.name}</Tag>
-              {t.feat && <div style={{ fontSize: 13, color: GREEN }}>VIP</div>}
+              {t.feat && <div style={{ fontSize: 13, color: GREEN }}>Soutien</div>}
             </div>
             <div style={{ fontSize: 'clamp(36px,4.5vw,48px)', fontWeight: 500, marginTop: 18, lineHeight: 1 }}>{t.price}</div>
-            <div style={{ fontSize: 14.5, color: dim(0.65), marginTop: 8 }}>{t.desc}</div>
-            <div style={{ height: 2, background: '#E0A8F2', margin: '20px 0' }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
-              {t.list.map((f) => (
-                <div key={f} style={{ display: 'flex', gap: 10, fontSize: 14.5, color: dim(0.82) }}>
-                  <span style={{ color: GREEN }}>&gt;</span><span>{f}</span>
-                </div>
-              ))}
-            </div>
+            <div style={{ fontSize: 14.5, color: dim(0.65), marginTop: 8, marginBottom: 24 }}>{t.desc}</div>
             <button onClick={scrollToWidget} className="btn btn-primary" style={{ marginTop: 'auto', width: '100%', fontSize: 17, padding: 10 }}>Accept</button>
           </Reveal>
         ))}

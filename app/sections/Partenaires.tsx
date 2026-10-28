@@ -10,7 +10,7 @@ export default function Partenaires() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,170px),1fr))', gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((p) => (
-          <div key={p} style={{ ...box, aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(224,168,242,0.7)' }}>
+          <div key={p} style={{ ...box, aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(187,104,241,0.7)' }}>
             Logo partenaire
           </div>
         ))}

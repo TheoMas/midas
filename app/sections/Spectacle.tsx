@@ -3,7 +3,7 @@ import { GREEN, PINK, Tag, box, dim, sectionStyle } from '@/app/components/ui'
 
 const experience = [
   { t: "L'immersion", d: 'Un décor SF, une lumière vivante, un son qui enveloppe.' },
-  { t: 'Le vivant',   d: "De l'impro et du stand-up : rien n'est tout à fait joué d'avance." },
+  { t: 'Le vivant',   d: "Musique, stand-up et cinéma en direct : rien n'est tout à fait joué d'avance." },
   { t: 'La fusion',   d: 'Cinq arts qui se répondent sur une même scène, sans frontière.' },
 ]
 
@@ -18,7 +18,7 @@ export default function Spectacle() {
           Une soirée.<br />Une histoire.<br />Un équipage. <span style={{ color: PINK }}>Et vous.</span>
         </h1>
         <p style={{ maxWidth: 680, fontSize: 'clamp(16px,1.9vw,19px)', lineHeight: 1.75, color: dim(0.78), margin: '24px 0 0' }}>
-          Le Cabaret MIDAS est une expérience narrative pluridisciplinaire. Comme si une comédie musicale, un concert, un spectacle d&apos;impro et une performance drag avaient fusionné dans un univers de science-fiction. Vous ne regardez pas un spectacle — vous embarquez.
+          Le Cabaret MIDAS est une expérience narrative pluridisciplinaire. Comme si une comédie musicale, un concert, un spectacle et du cinéma avaient fusionné dans un univers de science-fiction. Vous ne regardez pas un spectacle — vous embarquez.
         </p>
       </div>
 
@@ -45,12 +45,11 @@ export default function Spectacle() {
 
       <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,220px),1fr))', gap: 14 }}>
         {[1, 2, 3].map((g) => (
-          <div key={g} style={{ ...box, aspectRatio: '4/3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(224,168,242,0.8)' }}>
+          <div key={g} style={{ ...box, aspectRatio: '4/3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(187,104,241,0.8)' }}>
             [ Visuel à venir ]
           </div>
         ))}
       </Reveal>
-      <p style={note}>Visuels officiels par l&apos;Atelier Obturation — disponibles prochainement.</p>
     </section>
   )
 }

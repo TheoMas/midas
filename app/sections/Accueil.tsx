@@ -7,8 +7,6 @@ import Globe from '@/app/components/Globe'
 import { BORDER, GREEN, MidasMark, PINK, RetroWindow, TEXT, Tag, box, dim } from '@/app/components/ui'
 import type { Page } from '@/app/types'
 
-const HELLOASSO = 'https://www.helloasso.com/associations/association-midas/evenements/cabaret-midas'
-
 const disciplines = [
   { l: 'M', n: 'usique',       d: 'Le live qui fait vibrer la coque du vaisseau.' },
   { l: 'I', n: 'mprovisation', d: "L'imprévu comme carburant. Rien n'est écrit." },
@@ -17,7 +15,7 @@ const disciplines = [
   { l: 'S', n: 'tand-up',      d: 'Le rire propulsé à la vitesse lumière.' },
 ]
 
-const participants = ['Najim Ziani', 'Laurine Defrance', "Imp'Out"]
+const participants = ['Najim Ziani', 'Laurine Defrance', 'Clyventz', "Imp'Out"]
 
 const popupMsgs = [
   '',
@@ -42,10 +40,11 @@ export default function Accueil({ onNavigate }: Props) {
 
   return (
     <section style={{ animation: 'pageIn .5s ease both', maxWidth: 1240, margin: '0 auto', padding: 'clamp(24px,4vw,44px) clamp(14px,4vw,40px) 0', display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {/* Hero : occupe tout le premier écran, la fenêtre « selected » arrive au scroll */}
+      <div style={{ minHeight: 'calc(100svh - 70px - clamp(24px,4vw,44px) - 14px)', display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div style={{ fontSize: 13, color: dim(0.6) }}>01 — Plan d&apos;embarquement</div>
 
-      {/* Hero */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
+      <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', gap: 14 }}>
         <div style={{ flex: '1 1 560px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div style={{ ...box, flex: 1, padding: 'clamp(20px,3vw,34px)', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
@@ -99,6 +98,8 @@ export default function Accueil({ onNavigate }: Props) {
           </div>
         </div>
       </div>
+      <div aria-hidden style={{ textAlign: 'center', fontSize: 13, color: dim(0.55), padding: '4px 0 6px', animation: 'blink 3s ease-in-out infinite' }}>↓ défiler</div>
+      </div>
 
       {/* Popup */}
       <div style={{ display: 'flex', justifyContent: 'center', padding: '18px 0 26px' }}>
@@ -138,7 +139,7 @@ export default function Accueil({ onNavigate }: Props) {
           </div>
         </Reveal>
 
-        <Reveal style={{ ...box, flex: '2 1 560px', minWidth: 0, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'center' }}>
+        <Reveal style={{ ...box, flex: '2 1 560px', minWidth: 0, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'flex-start' }}>
           <MidasMark width={210} style={{ flex: '0 1 210px', maxWidth: '100%' }} />
           <div style={{ flex: '1 1 280px', display: 'flex', flexDirection: 'column' }}>
             {disciplines.map((d) => (
@@ -182,20 +183,15 @@ export default function Accueil({ onNavigate }: Props) {
       </div>
 
       {/* Billetterie HelloAsso */}
-      <div style={{ ...box, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'flex-start' }}>
+      <div style={{ ...box, padding: 'clamp(20px,3vw,30px)', display: 'flex', flexWrap: 'wrap', gap: 'clamp(20px,4vw,40px)', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ flex: '1 1 300px', minWidth: 0 }}>
           <Tag>Billetterie</Tag>
           <h2 style={{ margin: '16px 0 0', fontSize: 'clamp(28px,4vw,42px)', fontWeight: 500, lineHeight: 1.1 }}>Réservez votre place à bord.</h2>
           <p style={{ margin: '12px 0 0', maxWidth: 440, fontSize: 15.5, lineHeight: 1.65, color: dim(0.72) }}>
             Billetterie officielle du Cabaret MIDAS. Paiement sécurisé via HelloAsso.
           </p>
-          <div style={{ marginTop: 22, maxWidth: 420 }}>
-            <iframe id="haWidgetButton" title="Réserver via HelloAsso" src={`${HELLOASSO}/widget-bouton`} style={{ width: '100%', height: 70, border: 'none' }} />
-          </div>
         </div>
-        <div style={{ flex: '1 1 340px', minWidth: 0, maxWidth: 460 }}>
-          <iframe id="haWidgetVignette" title="Billetterie Cabaret MIDAS" src={`${HELLOASSO}/widget-vignette`} style={{ width: '100%', height: 513, border: 'none' }} />
-        </div>
+        <button onClick={() => onNavigate('billets')} className="btn btn-primary" style={{ fontSize: 19, padding: '12px 32px' }}>Voir les billets</button>
       </div>
 
       {/* Teaser */}
