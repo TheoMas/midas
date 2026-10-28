@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react'
 import Reveal from '@/app/components/Reveal'
 import { GREEN, PINK, PageHeader, SHOW_AT, Tag, box, dim, sectionStyle } from '@/app/components/ui'
 
-interface Artist { name: string; disc: string; tag: string; code: string; photo?: string }
+interface Artist { name: string; disc: string; tag: string; code: string; photo?: string; logo?: boolean; insta?: string }
 
 const artists: Artist[] = [
   { name: 'Najim Ziani',      disc: 'Stand-up',      tag: 'Humoriste',         code: '08-768' },
   { name: 'Laurine Defrance', disc: 'Stand-up',      tag: 'Humoriste',         code: '08-457' },
-  { name: 'Clyventz',         disc: 'Stand-up',      tag: 'Humoriste',         code: '08-512', photo: '/artistes/clyventz.jpg' },
+  { name: 'Clyventz',         disc: 'Stand-up',      tag: 'Humoriste · MC de la soirée', code: '08-512', photo: '/artistes/clyventz.jpg' },
   { name: "Imp'Out",          disc: 'Improvisation', tag: 'Troupe',            code: '08-695' },
-  { name: 'Dysteel',          disc: 'Musique live',  tag: "L'équipage sonore", code: '08-119' },
+  { name: 'Dysteel',          disc: 'Musique live',  tag: "L'équipage sonore", code: '08-119', photo: '/artistes/dysteel.png', logo: true, insta: 'dysteel.music' },
 ]
 
 // Artistes drag : surprise. Aucun vrai nom dans le code tant qu'ils ne sont pas révélés.
@@ -43,13 +43,16 @@ export default function Artistes() {
           <Reveal key={a.name} style={{ ...box, padding: 14, display: 'flex', flexDirection: 'column' }}>
             <div style={{ ...portrait, ...(a.photo && { border: 'none' }) }}>
               {a.photo
-                ? <img src={a.photo} alt={a.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                ? <img src={a.photo} alt={a.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: a.logo ? 'contain' : 'cover', background: '#000' }} />
                 : '[ Portrait ]'}
               <TargetCode code={a.code} />
             </div>
             <Tag size={13} style={{ padding: '2px 10px', alignSelf: 'flex-start', marginTop: 14 }}>{a.disc}</Tag>
             <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 26, textTransform: 'uppercase', marginTop: 10, lineHeight: 1.05 }}>{a.name}</div>
             <div style={{ fontSize: 14, color: dim(0.6), marginTop: 4 }}>{a.tag}</div>
+            {a.insta && (
+              <a href={`https://instagram.com/${a.insta}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, marginTop: 10, textDecoration: 'none' }}>@{a.insta} ↗</a>
+            )}
           </Reveal>
         ))}
         {surprises.map((code) => (

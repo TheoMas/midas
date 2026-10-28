@@ -54,22 +54,11 @@ export default function Contact() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 14 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div style={{ ...box, padding: 'clamp(22px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <Tag>Association MIDAS</Tag>
+            <Tag>Association MIDAS / Dysteel</Tag>
             <div>
               <div style={{ fontSize: 14, color: GREEN }}>e-mail</div>
-              <a href="mailto:contact@associationmidas.fr" style={bigLink}>contact@associationmidas.fr</a>
-            </div>
-          </div>
-
-          <div style={{ ...box, padding: 'clamp(22px,3vw,32px)', display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <Tag>Dysteel</Tag>
-            <div>
-              <div style={{ fontSize: 14, color: GREEN }}>e-mail</div>
-              <a href="mailto:dysteel.music@gmail.com" style={bigLink}>dysteel.music@gmail.com</a>
-            </div>
-            <div>
-              <div style={{ fontSize: 14, color: GREEN }}>téléphone</div>
-              <a href="tel:+33687776252" style={bigLink}>06 87 77 62 52</a>
+              <a href="mailto:contact@associationmidas.fr" style={{ ...bigLink, display: 'block' }}>contact@associationmidas.fr</a>
+              <a href="mailto:dysteel.music@gmail.com" style={{ ...bigLink, display: 'block', marginTop: 4 }}>dysteel.music@gmail.com</a>
             </div>
             <div>
               <div style={{ fontSize: 14, color: GREEN }}>site</div>

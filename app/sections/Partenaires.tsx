@@ -1,20 +1,25 @@
 import Reveal from '@/app/components/Reveal'
 import { PageHeader, box, dim, sectionStyle } from '@/app/components/ui'
 
+// Masqué tant qu'aucun partenaire n'est confirmé : ajouter ici les noms/logos.
+const partners: string[] = []
+
 export default function Partenaires() {
   return (
     <section style={sectionStyle}>
       <PageHeader tag="Réseau GLITCH" title="Partenaires">
-        Ils soutiennent l&apos;aventure MIDAS. La constellation s&apos;agrandit à chaque nouvelle alliance.
+        La constellation MIDAS s&apos;agrandit à chaque nouvelle alliance. Rejoignez l&apos;aventure.
       </PageHeader>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,170px),1fr))', gap: 14 }}>
-        {[1, 2, 3, 4, 5, 6].map((p) => (
-          <div key={p} style={{ ...box, aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(187,104,241,0.7)' }}>
-            Logo partenaire
-          </div>
-        ))}
-      </div>
+      {partners.length > 0 && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,170px),1fr))', gap: 14 }}>
+          {partners.map((p) => (
+            <div key={p} style={{ ...box, aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(187,104,241,0.7)' }}>
+              {p}
+            </div>
+          ))}
+        </div>
+      )}
 
       <Reveal style={{ ...box, padding: 'clamp(24px,4vw,44px)', display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ maxWidth: 540 }}>
