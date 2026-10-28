@@ -160,11 +160,11 @@ export default function Accueil({ onNavigate }: Props) {
       {/* Participation + date + lieu */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
         <Reveal style={{ ...box, flex: '1 1 300px', minWidth: 0, padding: 'clamp(20px,3vw,30px)' }}>
-          <a href={HELLOASSO} target="_blank" rel="noopener noreferrer" title="Billetterie HelloAsso" style={{ position: 'relative', display: 'block', width: 'min(100%, 200px)', aspectRatio: '1', marginBottom: 22 }}>
+          <a href={HELLOASSO} target="_blank" rel="noopener noreferrer" title="Billetterie HelloAsso" style={{ position: 'relative', display: 'block', width: 'min(100%, 280px)', aspectRatio: '1', marginBottom: 22 }}>
             <div style={corner({ top: 0, left: 0, borderTop: edge, borderLeft: edge })} />
             <div style={corner({ bottom: 0, left: 0, borderBottom: edge, borderLeft: edge })} />
             <div style={corner({ bottom: 0, right: 0, borderBottom: edge, borderRight: edge })} />
-            <img src="/qr-billetterie.png" alt="QR code de la billetterie HelloAsso" style={{ position: 'absolute', inset: 16, width: 'calc(100% - 32px)', height: 'calc(100% - 32px)', imageRendering: 'pixelated' }} />
+            <img src="/qr-billetterie.png" alt="QR code de la billetterie HelloAsso" style={{ position: 'absolute', inset: 12, width: 'calc(100% - 24px)', height: 'calc(100% - 24px)', imageRendering: 'pixelated' }} />
           </a>
           <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>Avec la participation de :</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 16 }}>
